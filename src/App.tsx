@@ -1,18 +1,26 @@
-import './index.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/layout/Layout';
+import HomePage from './pages/HomePage';
+import SleepingBagPage from './pages/SleepingBagPage';
+import LifeJacketPage from './pages/LifeJacketPage';
+import PurchaseVideoPage from './pages/PurchaseVideoPage';
+import NotFoundPage from './pages/NotFoundPage';
+import './index.css';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white">
-      <div className="container mx-auto px-4">
-        <h1 className="text-4xl font-bold text-primary-600 py-8">
-          브리니아 홈페이지
-        </h1>
-        <p className="text-lg text-gray-700">
-          React + TypeScript + Vite + Tailwind CSS로 구축된 프로젝트입니다.
-        </p>
-      </div>
-    </div>
-  )
+    <BrowserRouter>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/sleeping-bag" element={<SleepingBagPage />} />
+          <Route path="/life-jacket" element={<LifeJacketPage />} />
+          <Route path="/purchase-video" element={<PurchaseVideoPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Layout>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
